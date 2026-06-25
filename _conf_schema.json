@@ -1,26 +1,82 @@
 {
-  "api_url": {
-    "type": "string",
-    "label": "网易云 API 地址",
-    "description": "自行部署的 NeteaseCloudMusicApi 服务地址，例如：http://127.0.0.1:3000",
-    "default": "http://127.0.0.1:3000"
+  "ncm_api": {
+    "type": "object",
+    "description": "网易云 API",
+    "default": {},
+    "items": {
+      "api_url": {
+        "type": "string",
+        "description": "网易云 API 地址",
+        "hint": "自行部署的 NeteaseCloudMusicApi 服务地址，例如：http://127.0.0.1:3000",
+        "default": "http://127.0.0.1:3000"
+      },
+      "quality": {
+        "type": "string",
+        "description": "优先音质",
+        "hint": "优先获取的音质（lossless / exhigh / higher / standard）。如果不可用，插件会自动尝试更低的音质。",
+        "default": "exhigh"
+      },
+      "search_limit": {
+        "type": "int",
+        "description": "搜索结果数量",
+        "hint": "每次搜索时，向用户展示的歌曲选项数量。",
+        "default": 5
+      },
+      "wait_timeout": {
+        "type": "int",
+        "description": "选歌等待时长（秒）",
+        "hint": "用户看到搜索结果后，有多少秒时间可以回复数字选歌。超时后会话自动清理。",
+        "default": 60
+      },
+      "send_cover": {
+        "type": "bool",
+        "description": "发送封面图",
+        "hint": "播放歌曲时是否附带专辑封面图。关闭可加快发送速度，部分平台对图片支持不佳时可关闭。",
+        "default": true
+      },
+      "enable_natural_language": {
+        "type": "bool",
+        "description": "启用自然语言点歌",
+        "hint": "开启后，用户可以直接说「来一首xxx」、「播放xxx」等自然语言触发点歌。关闭后仅支持 /点歌 命令。",
+        "default": true
+      },
+      "audio_send_mode": {
+        "type": "string",
+        "description": "默认音频发送方式",
+        "hint": "默认发送模式。可选 voice / url / both。用户在数字后附加「语音」「链接」「全部」可临时覆盖此默认值。",
+        "default": "voice"
+      }
+    }
   },
-  "quality": {
-    "type": "string",
-    "label": "优先音质",
-    "description": "优先获取的音质（lossless / exhigh / higher / standard）。如果不可用，插件会自动尝试更低的音质。",
-    "default": "exhigh"
-  },
-  "search_limit": {
-    "type": "int",
-    "label": "搜索结果数量",
-    "description": "每次搜索时，向用户展示的歌曲选项数量。",
-    "default": 5
-  },
-  "cookie": {
-    "type": "text",
-    "label": "网易云 Cookie",
-    "description": "登录网易云网页版后，从浏览器开发者工具复制 Cookie。填写后可播放 VIP 歌曲。",
-    "default": ""
+  "short_url_api": {
+    "type": "object",
+    "description": "短链接 API",
+    "default": {},
+    "items": {
+      "short_url_enabled": {
+        "type": "bool",
+        "description": "启用短链接",
+        "hint": "开启后，发送的音频链接将自动转换为短链接。短网址服务来自 https://www.urlc.cn/",
+        "default": false
+      },
+      "short_url_api_key": {
+        "type": "string",
+        "description": "短链接 API 密钥",
+        "hint": "urlc.cn 的 API Token，用于生成短链接。",
+        "default": ""
+      },
+      "short_url_domain": {
+        "type": "string",
+        "description": "自定义短域名（可选）",
+        "hint": "留空则使用默认短域名 http://i8c.cn/。",
+        "default": ""
+      },
+      "short_url_expiry_days": {
+        "type": "int",
+        "description": "短链接有效期（天）",
+        "hint": "从生成当天起算的有效天数，默认 1 天。",
+        "default": 1
+      }
+    }
   }
 }

@@ -1,7 +1,11 @@
 # AstrBot 豪华网易云点歌插件
 
-[![version](https://img.shields.io/badge/version-1.2.0-blue.svg)](https://github.com/NachoCrazy/netease-music-astrbot-plugin)
-[![license](https://img.shields.io/github/license/NachoCrazy/netease-music-astrbot-plugin.svg)](LICENSE)
+[![version](https://img.shields.io/badge/version-1.2.0-blue.svg)](https://github.com/MiaowCham/netease-music-astrbot-plugin)
+[![license](https://img.shields.io/github/license/MiaowCham/netease-music-astrbot-plugin.svg)](LICENSE)
+
+> [!note]
+> 该 fork 版本基于 [NachoCrazy](https://github.com/NachoCrazy) 的原始插件，添加了一些增强功能和修复。您可以在 [原始仓库](https://github.com/NachoCrazy/netease-music-astrbot-plugin) 查看原始代码。  
+> 使用 Trae 编辑器、由 DeepSeek V4、GPT 5.5 提供支持。
 
 这是一款为 [AstrBot](https://github.com/AstrBotDevs/AstrBot) 设计的，功能强大且体验豪华的网易云音乐点歌插件。
 
@@ -13,6 +17,23 @@
 - **智能音质回退**：当您设定的最高音质不可用时（如VIP限制），插件会自动尝试获取次一级音质，大大提高播放成功率。
 - **多种触发方式**：支持命令（如 `/点歌`）和自然语言（如 `来一首...`）两种方式点歌。
 - **WebUI配置**：可在 AstrBot 的网页后台轻松配置各项参数。
+
+## 功能增强/修复及 TODO
+
+### 已修复问题
+- [x] 修复重复发送搜索结果的问题
+- [x] 更改消息内容为不那么猫娘的版本
+
+### 已增强功能
+- [x] 二维码登录功能
+- [x] Cookie 存储与使用
+- [x] ID直接点歌功能
+- [x] 自定义发送消息类型（语音/链接）
+- [x] 音频URL自动转短链接发送
+
+### 待办事项
+- [ ] 将 main.py 进行模块化拆分，以提高可维护性和可扩展性。
+- [ ] 想不出来了，以后再说
 
 ## ⚙️ 安装与配置
 
