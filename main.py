@@ -470,7 +470,7 @@ class Main(star.Star):
             duration_ms = song_details.get("dt", 0)
             dur_str = f"{duration_ms//60000}:{(duration_ms%60000)//1000:02d}"
 
-            await self._send_song_messages(event, num, title, artists, album, dur_str, cover_url, audio_url, send_mode)
+            await self._send_song_messages(event, num, song_id, title, artists, album, dur_str, cover_url, audio_url, send_mode)
 
         except Exception as e:
             logger.error(f"Netease Music plugin: Failed to play song {song_id}. Error: {e!s}")
@@ -504,7 +504,7 @@ class Main(star.Star):
             dur_str = f"{duration_ms//60000}:{(duration_ms%60000)//1000:02d}"
             logger.info(f"Netease Music plugin: play_song_by_id resolved song_id={song_id}, title={title!r}, artists={artists!r}")
 
-            await self._send_song_messages(event, None, title, artists, album, dur_str, cover_url, audio_url, send_mode)
+            await self._send_song_messages(event, None, song_id, title, artists, album, dur_str, cover_url, audio_url, send_mode)
 
         except Exception as e:
             logger.error(f"Netease Music plugin: Failed to play song by id {song_id}. Error: {e!s}")
@@ -565,7 +565,7 @@ class Main(star.Star):
             logger.warning(f"Netease Music plugin: short_url request failed: {e!s}")
             return None
 
-    async def _send_song_messages(self, event: AstrMessageEvent, num: Optional[int], title: str, artists: str, album: str, dur_str: str, cover_url: str, audio_url: str, send_mode: Optional[str] = None):
+    async def _send_song_messages(self, event: AstrMessageEvent, num: Optional[int], song_id: int, title: str, artists: str, album: str, dur_str: str, cover_url: str, audio_url: str, send_mode: Optional[str] = None):
         """Constructs and sends the song info and audio messages."""
         resolved_mode = self._resolve_send_mode(send_mode)
         first_line = f"好，为您播放第 {num} 首歌曲" if num is not None else "好，为您播放指定 ID 歌曲"
@@ -575,7 +575,7 @@ class Main(star.Star):
 🎤 歌手：{artists}
 💿 专辑：{album}
 ⏳ 时长：{dur_str}
-✨ 音质：{self._cfg('quality', 'exhigh')}
+🆔 ID：{song_id}
 """
         info_components = [Plain(detail_text)]
 
