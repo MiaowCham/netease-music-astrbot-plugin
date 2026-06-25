@@ -45,6 +45,12 @@
         "description": "默认音频发送方式",
         "hint": "默认发送模式。可选 voice / url / both。用户在数字后附加「语音」「链接」「全部」可临时覆盖此默认值。",
         "default": "voice"
+       },
+      "cookie": {
+        "type": "text",
+        "description": "网易云 Cookie",
+        "hint": "登录网易云网页版后，从浏览器开发者工具复制 Cookie。填写后可播放 VIP 歌曲。",
+        "default": ""
       }
     }
   },
